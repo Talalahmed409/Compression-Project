@@ -116,95 +116,95 @@ class CompressionGUI(QMainWindow):
         self.switch_method()
 
         self.setStyleSheet("""
-                    QMainWindow {
-                        background-color: #2b2b2b;
-                    }
-                    QLabel {
-                        font-size: 14px;
-                        color: #ffffff;
-                        text-align: center;
-                    }
-                    QComboBox {
-                        font-size: 13px;
-                        background-color: #3c3f41;
-                        color: #ffffff;
-                        border: 2px solid #5c5f61;
-                        padding: 0px;
-                        border-radius: 4px;
-                        text-align: center;
-                    }
-                    QComboBox QAbstractItemView {
-                        font-size: 13px;
-                        background-color: #3c3f41;
-                        color: #f0f0f0;
-                        selection-color: #ffffff;
-                        border: 1px solid #5c5f61;
-                    }
-                    QTextEdit {
-                        font-size: 13px;
-                        background-color: #3c3f41;
-                        color: #f0f0f0;
-                        border: 1px solid #5c5f61;
-                        border-radius: 4px;
-                        text-align: center;
-                    }
-                    QPushButton {
-                        font-size: 13px;
-                        color: #ffffff;
-                        background-color: #ff0048;
-                        border: none;
-                        border-radius: 4px;
-                        padding: 6px 12px;
-                    }
-                    QPushButton:hover {
-                        background-color: #b3003f;
-                    }
-                    QPushButton:disabled {
-                        background-color: #555555;
-                    }
-                    QTableWidget {
-                        font-size: 13px;
-                        background-color: #3c3f41;
-                        color: #f0f0f0;
-                        border: 1px solid #5c5f61;
-                        border-radius: 4px;
-                        gridline-color: #5c5f61;
-                        text-align: center;
-                    }
-                    QTableWidget::item {
-                        text-align: center;
-                        padding: 4px;
-                        border: none;
-                        background-color: #3c3f41;
-                        color: #f0f0f0;
-                    }
-                    QTableWidget::item:selected {
-                        background-color: #ff0048;
-                        color: #ffffff;
-                    }
-                    QHeaderView {
-                        background-color: #3c3f41;
-                    }
+        QMainWindow {
+            background-color: #2b2b2b;
+        }
+        QLabel {
+            font-size: 14px;
+            color: #ffffff;
+            text-align: center;
+        }
+        QComboBox {
+            font-size: 13px;
+            background-color: #3c3f41;
+            color: #ffffff;
+            border: 2px solid #5c5f61;
+            padding: 0px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        QComboBox QAbstractItemView {
+            font-size: 13px;
+            background-color: #3c3f41;
+            color: #f0f0f0;
+            selection-color: #ffffff;
+            border: 1px solid #5c5f61;
+        }
+        QTextEdit {
+            font-size: 13px;
+            background-color: #3c3f41;
+            color: #f0f0f0;
+            border: 1px solid #5c5f61;
+            border-radius: 4px;
+            text-align: center;
+        }
+        QPushButton {
+            font-size: 13px;
+            color: #ffffff;
+            background-color: #ff0048;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+        QPushButton:hover {
+            background-color: #b3003f;
+        }
+        QPushButton:disabled {
+            background-color: #555555;
+        }
+        QTableWidget {
+            font-size: 13px;
+            background-color: #3c3f41;
+            color: #f0f0f0;
+            border: 1px solid #5c5f61;
+            border-radius: 4px;
+            gridline-color: #5c5f61;
+            text-align: center;
+        }
+        QTableWidget::item {
+            text-align: center;
+            padding: 4px;
+            border: none;
+            background-color: #3c3f41;
+            color: #f0f0f0;
+        }
+        QTableWidget::item:selected {
+            background-color: #ff0048;
+            color: #ffffff;
+        }
+        QHeaderView {
+            background-color: #3c3f41;
+        }
 
-                    QHeaderView::section {
-                        text-align: center;
-                        background-color: #3c3f41;
-                        color: #ffffff;
-                        border: 1px solid #5c5f61;
-                        padding: 4px;
-                    }
-                    QScrollBar:vertical {
-                        width: 8px;
-                        background: #3c3f41;
-                    }
-                    QScrollBar::handle:vertical {
-                        background: #ff0048;
-                        border-radius: 4px;
-                    }
-                    QMessageBox {
-                        background: #3c3f41;
-                    }
-                """)
+        QHeaderView::section {
+            text-align: center;
+            background-color: #3c3f41;
+            color: #ffffff;
+            border: 1px solid #5c5f61;
+            padding: 4px;
+        }
+        QScrollBar:vertical {
+            width: 8px;
+            background: #3c3f41;
+        }
+        QScrollBar::handle:vertical {
+            background: #ff0048;
+            border-radius: 4px;
+        }
+        QMessageBox {
+            background: #3c3f41;
+        }
+    """)
 
     def switch_method(self):
         method = self.method_combo.currentText()
@@ -248,7 +248,6 @@ class CompressionGUI(QMainWindow):
         original_size = len(input_text) * 8
         encoded_size = 0
         result = ""
-        simplified_ratio = "N/A"  # Default value if not calculated
 
         if method == "Arithmetic Encoding":
             probabilities = {}
