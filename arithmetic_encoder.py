@@ -1,5 +1,6 @@
 import math
 
+
 def arithmetic_encode(sequence, probabilities):
     # Calculate cumulative probabilities
     cumulative_probs = {}
@@ -12,8 +13,9 @@ def arithmetic_encode(sequence, probabilities):
     low, high = 0.0, 1.0
     for char in sequence:
         if char not in cumulative_probs:
-            raise ValueError(f"Character '{char}' not found in the probability dictionary.")
-        
+            raise ValueError(
+                f"Character '{char}' not found in the probability dictionary.")
+
         char_low, char_high = cumulative_probs[char]
         range_width = high - low
         high = low + range_width * char_high
@@ -31,19 +33,3 @@ def arithmetic_encode(sequence, probabilities):
     compression_ratio = original_size / num_bits_encoded
 
     return encoded_value, compression_ratio
-
-
-# Example Usage
-sequence = "ACBA"
-probabilities = {
-    "A": 0.8,
-    "B": 0.02,
-    "C": 0.18
-}
-
-try:
-    encoded_value, compression_ratio = arithmetic_encode(sequence, probabilities)
-    print(f"Encoded value: {encoded_value}")
-    print(f"Compression ratio: {compression_ratio:.2f}")
-except ValueError as e:
-    print(e)
