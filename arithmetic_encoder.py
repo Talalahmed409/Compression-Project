@@ -33,3 +33,21 @@ def arithmetic_encode(sequence, probabilities):
     compression_ratio = original_size / num_bits_encoded
 
     return encoded_value, compression_ratio
+def arithmetic_decode(encoded_value, probabilities, sequence_length):
+    """Decode an encoded value using Arithmetic Decoding."""
+    cumulative_probs = {}
+    low = 0.0
+
+    for char, prob in probabilities.items():
+        cumulative_probs[char] = (low, low + prob)
+        low += prob
+
+    decoded_sequence = ""
+    value = encoded_value
+    for _ in range(sequence_length):
+        for char, (low, high) in cumulative_probs.items():
+            if low <= value < high:
+                decoded_sequence += char
+                value = (value - low) / (high - low)
+                break
+    return decoded_sequence

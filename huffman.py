@@ -38,22 +38,21 @@ def build_huffman_tree(frequency):
             merged.hi = lo  # The lower frequency node goes to the right
 
         heapq.heappush(heap, merged)  # Push the merged node into the heap
-
     return heap[0] if heap else None  # In the end, return the root node
 
 
-def generate_huffman_codes(node, code='', huffman_code={}):
-    if node is None:
-        return
+def generate_huffman_codes(node, code='', huffman_code=None):
+    if huffman_code is None:
+        huffman_code = {}
 
     if node.char is not None:
         # if it is a leaf node it stores the code for the characcter
         huffman_code[node.char] = code
-
-    # traverses through the left child and updates their code
-    generate_huffman_codes(node.lo, code + '0', huffman_code)
+    else:
+        # traverses through the left child and updates their code
+        generate_huffman_codes(node.lo, code + '0', huffman_code)
     # traverses through the right child and updates their code
-    generate_huffman_codes(node.hi, code + '1', huffman_code)
+        generate_huffman_codes(node.hi, code + '1', huffman_code)
 
     return huffman_code  # returns dictionary for codes
 
@@ -61,3 +60,20 @@ def generate_huffman_codes(node, code='', huffman_code={}):
 def encode_text(text, huffman_code):
     # replaces each char with its code
     return ''.join(huffman_code[char] for char in text)
+
+
+def decode_huffman(encoded_text, root):
+    decoded_text = []
+    current_node = root
+
+    for bit in encoded_text:
+        if bit == '0':
+            current_node = current_node.lo
+        else:
+            current_node = current_node.hi
+
+        if current_node.char is not None:
+            decoded_text.append(current_node.char)
+            current_node = root  # Reset to the root for the next character
+
+    return ''.join(decoded_text)

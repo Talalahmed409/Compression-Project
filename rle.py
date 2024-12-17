@@ -16,3 +16,18 @@ def RLE(input_string):
 
     encoded_string += str(count) + prev_char
     return encoded_string
+def RLE_decode(encoded_string):
+    if not encoded_string:
+        return ""
+
+    decoded_string = ""
+    count = ""
+
+    for char in encoded_string:
+        if char.isdigit():
+            count += char
+        else:
+            decoded_string += char * int(count)
+            count = ""
+
+    return decoded_string
