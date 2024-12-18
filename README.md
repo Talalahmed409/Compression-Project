@@ -10,7 +10,7 @@
   - NU Scalar Quantization
 - **Interactive GUI** built with PyQt5
 - **Real-time encoding and decoding** with detailed outputs
-- Visual representation of **compression ratios and results**
+- Clear output of **compression ratios and results**
 
 ---
 
